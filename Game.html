@@ -1,0 +1,243 @@
+<html>
+    <head>
+        <title>Game Designed By Vikas Prasad</title>
+
+    <style>
+        body{
+            background-color: rgb(0, 255, 191);
+        }
+        #start_game{
+            position:absolute;
+            width:10%;
+            left:45%;
+            height: 8%;
+            border-radius: 10px;
+            border: 4px solid rgb(0, 0, 0);
+            background-color: rgb(42, 0, 98);
+            color: black;
+            font-size: large;
+            cursor: pointer;
+
+        }
+        #start_game:hover{
+            transform: scale(1.1);
+            background-color: rgb(2, 2, 47);
+
+        }
+
+        #score_board{
+            position:absolute;
+            width:15%;
+            height:15%;
+            left:80%;
+            font-size: large;
+            border-radius: 10px;
+        }
+        #score{
+            position:absolute;
+            left:83.5%;
+            font-size: x-large;
+        }
+
+        #game_area{
+            width:60%;
+            height:70%;
+            position: absolute;
+            left: 20%;
+            top:20%;
+            pointer-events:none;
+        }
+
+        div button{
+            width:16.20%;
+            height:16.65%;
+            background-color: rgb(248, 0, 12);
+            border: 2px solid black;
+            border-radius: 3px;
+            font-size: xx-large;
+        }
+
+        img{
+            width: 99%;
+            height: 99%;
+            cursor: pointer;
+            
+        }
+
+        div button:hover{
+            transform: scale(1.1);
+        }
+
+        #gameOver{
+            border:3px solid black;
+            width:20%;
+            height:7%;
+            text-align: center;
+            position: absolute;
+            left:40%;
+            top: 91%;
+            background-color: rgb(255, 136, 0);
+            font-size: x-large;
+            display: none;
+        }
+
+        #plus{
+            width:8%;
+            height:10%;
+            position: absolute;
+            left:70%;
+            top:8%;
+            font-size: xx-large;
+            color: brown;
+            
+        }
+        
+    </style>
+
+    <script>
+        const arr=[];
+
+        function refresh()
+        {
+            document.location.reload(true);
+        }
+
+        stop=1;
+        function stopBlink()
+        {
+            clearTimeout(p);
+        }
+        function check(id_button)
+        {
+            if(arr[id_button-1]==-1)
+            {   
+                a=document.getElementById("i"+id_button);
+                a.src="Danger.jpg";
+                var b=document.getElementById("start_game");
+                b.innerHTML="Your Score="+score;
+                var d=document.getElementById("gameOver");
+                d.style.display="block";
+                h=document.getElementById("game_area");
+                h.style.pointerEvents="none";
+                setTimeout(refresh,5000);
+                
+            }
+            else
+            {
+                score+=arr[id_button-1];
+                var c=document.getElementById("score_board");
+                c.innerHTML=score;
+                var e=document.getElementById("i"+id_button);
+                e.src="correct.jpg";
+                // e.style.visibility="hidden"
+                e.style.pointerEvents="none";
+                var f=document.getElementById("plus");
+                f.innerHTML="+"+arr[id_button-1];
+            }
+        }
+        function assignScore()
+        {
+            stopBlink();
+            score=0;
+            for(elem=0;elem<37;elem++)
+            {
+                arr[elem]=Math.floor(Math.random() * 101);
+                
+                
+            }
+            var i=Math.floor(Math.random() * 10)+Math.floor(Math.random() * 10)+Math.floor(Math.random() * 10)+Math.floor(Math.random() * 10)-1;
+            var j=Math.floor(Math.random() * 10)+Math.floor(Math.random() * 10)+Math.floor(Math.random() * 10)+Math.floor(Math.random() * 10)-1;
+            var k=Math.floor(Math.random() * 10)+Math.floor(Math.random() * 10)+Math.floor(Math.random() * 10)+Math.floor(Math.random() * 10)-1;
+            arr[i]=-1;
+            arr[j]=-1;
+            arr[k]=-1;
+            var m=document.getElementById("start_game");
+            m.innerHTML="Go";
+            var f=document.getElementById("game_area")
+            f.style.pointerEvents="all";
+        }
+
+        
+    </script>
+
+    </head>
+
+    <body>
+
+    </body>
+    <button id="start_game" onclick="assignScore()">Start Game</button>
+    <button id="score_board">0</button>
+    <div id="game_area">
+        <!-- row1 -->
+        <button id="j1"><img src="ClickMe.jpg" id="i1" onclick="check(1)"></button>
+        <button id="j2"><img src="ClickMe.jpg" id="i2" onclick="check(2)"></button>
+        <button id="j3"><img src="ClickMe.jpg" id="i3" onclick="check(3)"></button>
+        <button id="j4"><img src="ClickMe.jpg" id="i4" onclick="check(4)"></button>
+        <button id="j5"><img src="ClickMe.jpg" id="i5" onclick="check(5)"></button>
+        <button id="j6"><img src="ClickMe.jpg" id="i6" onclick="check(6)"></button>
+
+        <!-- row2 -->
+        <button id="j7"><img src="ClickMe.jpg" id="i7" onclick="check(7)"></button>        
+        <button id="j8"><img src="ClickMe.jpg" id="i8" onclick="check(8)"></button>        
+        <button id="j9"><img src="ClickMe.jpg" id="i9" onclick="check(9)"></button>        
+        <button id="j10"><img src="ClickMe.jpg" id="i10" onclick="check(10)"></button>        
+        <button id="j11"><img src="ClickMe.jpg" id="i11" onclick="check(11)"></button>        
+        <button id="j12"><img src="ClickMe.jpg" id="i12" onclick="check(12)"></button>
+
+        <!-- row3 -->
+        <button id="j13"><img src="ClickMe.jpg" id="i13" onclick="check(13)"></button>        
+        <button id="j14"><img src="ClickMe.jpg" id="i14" onclick="check(14)"></button>        
+        <button id="j15"><img src="ClickMe.jpg" id="i15" onclick="check(15)"></button>        
+        <button id="j16"><img src="ClickMe.jpg" id="i16" onclick="check(16)"></button>        
+        <button id="j17"><img src="ClickMe.jpg" id="i17" onclick="check(17)"></button>        
+        <button id="j18"><img src="ClickMe.jpg" id="i18" onclick="check(18)"></button>
+
+        <!-- row4 -->
+        <button id="j19"><img src="ClickMe.jpg" id="i19" onclick="check(19)"></button>        
+        <button id="j20"><img src="ClickMe.jpg" id="i20" onclick="check(20)"></button>        
+        <button id="j21"><img src="ClickMe.jpg" id="i21" onclick="check(21)"></button>        
+        <button id="j22"><img src="ClickMe.jpg" id="i22" onclick="check(22)"></button>        
+        <button id="j23"><img src="ClickMe.jpg" id="i23" onclick="check(23)"></button>        
+        <button id="j24"><img src="ClickMe.jpg" id="i24" onclick="check(24)"></button> 
+
+        <!-- row5 -->
+        <button id="j25"><img src="ClickMe.jpg" id="i25" onclick="check(25)"></button>        
+        <button id="j26"><img src="ClickMe.jpg" id="i26" onclick="check(26)"></button>        
+        <button id="j27"><img src="ClickMe.jpg" id="i27" onclick="check(27)"></button>        
+        <button id="j28"><img src="ClickMe.jpg" id="i28" onclick="check(28)"></button>        
+        <button id="j29"><img src="ClickMe.jpg" id="i29" onclick="check(29)"></button>        
+        <button id="j30"><img src="ClickMe.jpg" id="i30" onclick="check(30)"></button> 
+
+        <!-- row6 -->
+        <button id="j31"><img src="ClickMe.jpg" id="i31" onclick="check(31)"></button>        
+        <button id="j32"><img src="ClickMe.jpg" id="i32" onclick="check(32)"></button>        
+        <button id="j33"><img src="ClickMe.jpg" id="i33" onclick="check(33)"></button>        
+        <button id="j34"><img src="ClickMe.jpg" id="i34" onclick="check(34)"></button>        
+        <button id="j35"><img src="ClickMe.jpg" id="i35" onclick="check(35)"></button>        
+        <button id="j36"><img src="ClickMe.jpg" id="i36" onclick="check(36)"></button>   
+                 
+
+    </div>
+    <div id="score">Total Score</div>
+    <div id="gameOver">Game Over!!</div>
+    <div id="plus"></div>
+    <script>
+        q=1;
+        function blink()
+        {
+            var t=document.getElementById("start_game");
+            if(q==1)
+            {
+                t.style.backgroundColor="red";
+                q--;
+            }
+            else if(q==0)
+            {
+                t.style.backgroundColor="blue";
+                q++;
+            }
+            p=setTimeout(blink,300);
+        }
+        blink();
+    </script>
+</html>
